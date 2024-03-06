@@ -32,7 +32,7 @@ router.post("/", validateUser, (req, res) => {
     });
 });
 
-router.put("/:id", validateUserId, validateUser, (req, res) => {
+router.put("/:id", validateUserId, validateUser, (req, res, next) => {
   User.update(req.params.id, { name: req.name })
     .then(() => {
       return User.getById(req.params.id);
